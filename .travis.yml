@@ -4,12 +4,10 @@ jobs:
   include:
   - stage: build docker image
     script:
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - echo "$DOCKER_PASSWORD" | docker login -u "nover" --password-stdin
     - docker build -t node-k8s-tester .
     - docker images
-    - docker tag node-k8s-tester $DOCKER_USERNAME/node-k8s-tester
-    - docker push $DOCKER_USERNAME/node-k8s-tester
+    - docker tag node-k8s-tester nover/node-k8s-tester
+    - docker push nover/node-k8s-tester
 env:
-  DOCKER_USERNAME: nover
-  DOCKER_PASSWORD:
-    secure: hv+XWtDIDRYrtOe4BpB9+czMUUlSWFArahZ1KjjmLMMvSrZP8WRzuqVx8qbVH1YGadhkmK23fKpQPWwZRvl5EnQLFhccS0HRVSBtFMBPbtVLFyss0pv/gnYi9Iz46HJmvr8ZB3UNOkDstHTGU1q+gluhXmNlSuLnUhaA37ozfNoppaqoiIR7TFmdF0gJN/iXG8JOp9U8ClCLnyXz3JQWNqflrv+hfYHssjjlH7jPbSgkPTN3hB1HU+eHQCBK+Jf4KlzeWr+S/iwiiOpOVm3EQDOcFEF+OCyOkhF7QrLRf8zWmX4wTQsBpsYGc6oUniZ467d19oo7xegjz2NEbNlcpZvHKX14lxEz3/m6bIkcLQ3dJQMEjUrX/DjJ5TsauGQXbA7kXd0miiuGI/k4Y2X589g8v3+F19KGacE/tzIR5AX/VekxdacydFCOo2sQ2Zeit/v2mOJLxHvzNWwdbl1Y5EPrp3cxSXNcfcMUMei4IQIJou49nDFxdeEnUmI//C7qZWZg2pPSa5fdvwTEAjQxamgjx/iM3lgWCNro58OzEzz9nAC3ujh5w5XG4DwCvWqBfKWiyNUoQjHDIpvruFYJQtNi1YB7AD25jxfMjHQx5+TX6e7nL9tMhGxYwd1yFng9H6nY06UiQLZrjyQXHnByU3UY6vh/1C5CMhbxIrgbiQ0=
+  secure: HajsNyRthDp/cFVH+gH3f1d0nHFg+gv3lsWuNtJFtH/vn3Q6muBvf1skbPQ6CoyZ96csMQGhio995lEBzyrT63dY3W18O6+c/qGTA5G2qis0OH0cnf45X+3JdrUaGCMJaS9b3MwLqcsuGJpwZaumvzcSAnwc8CVYVe3u2rpsSVa8JcATFF43VVySdiX+jj+V6JtqME+rYviDPTsiOR9wShlphvvcPm4MN/PA9wmyTqg6VELm8xIiz9x4YfbzT49ev2Icoqp/ITBNNwLZIYO/5rSTWAC9UyQsbcSThxDxha06Y+I4ottrbLNYgV9jx1DTx8OlCp4HDN10TZ/eW0fBhqrRC5GZ7owNxxtjonwH8vEZhDd28ZSEXT21anBsQfxQvLD9CDy/rSbahP90pQsmMXC9EleEiW9i+t22SUDBOjJfqVDHUa7SzPFkaIWVpw5j4CYBkrDOHVT+uw7SfApwD/iKnI0a8zGkbJ1ajRHXGMiD6XNFpgZmEzryO7xvaGGn5c3dhG+h+4JaxADuQf4vkXLULVtDWYrkRfUWxzVXv2COoBw6Fgv0WdZySUl9EfyGfb0VByTKpS4fv8aMFqi+DQeXCaks/8htv0Tlm12L8mQhkzSWiHR+PXIx4WPWr8vQmcLrHE/D+j43cPOGc1rImICAzUHIi69YyHYCJOcsYM0=
