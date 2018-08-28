@@ -1,3 +1,5 @@
+require('./rabbit');
+
 const server = require('./server');
 
 server.start()
