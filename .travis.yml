@@ -1,0 +1,15 @@
+sudo: true
+dist: trusty
+jobs:
+  include:
+  - stage: build docker image
+    script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker build -t node-k8s-tester .
+    - docker images
+    - docker tag node-k8s-tester $DOCKER_USERNAME/node-k8s-tester
+    - docker push $DOCKER_USERNAME/node-k8s-tester
+env:
+  DOCKER_USERNAME: nover
+  DOCKER_PASSWORD:
+    secure: hv+XWtDIDRYrtOe4BpB9+czMUUlSWFArahZ1KjjmLMMvSrZP8WRzuqVx8qbVH1YGadhkmK23fKpQPWwZRvl5EnQLFhccS0HRVSBtFMBPbtVLFyss0pv/gnYi9Iz46HJmvr8ZB3UNOkDstHTGU1q+gluhXmNlSuLnUhaA37ozfNoppaqoiIR7TFmdF0gJN/iXG8JOp9U8ClCLnyXz3JQWNqflrv+hfYHssjjlH7jPbSgkPTN3hB1HU+eHQCBK+Jf4KlzeWr+S/iwiiOpOVm3EQDOcFEF+OCyOkhF7QrLRf8zWmX4wTQsBpsYGc6oUniZ467d19oo7xegjz2NEbNlcpZvHKX14lxEz3/m6bIkcLQ3dJQMEjUrX/DjJ5TsauGQXbA7kXd0miiuGI/k4Y2X589g8v3+F19KGacE/tzIR5AX/VekxdacydFCOo2sQ2Zeit/v2mOJLxHvzNWwdbl1Y5EPrp3cxSXNcfcMUMei4IQIJou49nDFxdeEnUmI//C7qZWZg2pPSa5fdvwTEAjQxamgjx/iM3lgWCNro58OzEzz9nAC3ujh5w5XG4DwCvWqBfKWiyNUoQjHDIpvruFYJQtNi1YB7AD25jxfMjHQx5+TX6e7nL9tMhGxYwd1yFng9H6nY06UiQLZrjyQXHnByU3UY6vh/1C5CMhbxIrgbiQ0=
